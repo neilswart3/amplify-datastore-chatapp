@@ -1,4 +1,5 @@
+import Chats from "./Chats";
 import Header from "./Header";
 import Form from "./Form";
 
-export { Header, Form };
+export { Chats, Header, Form };

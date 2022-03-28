@@ -1,17 +1,20 @@
 import { Button, TextField } from "@aws-amplify/ui-react";
-import { useState } from "react";
 
-const Form: React.FC = () => {
-  const [message, setMessage] = useState<string>("");
+interface Props {
+  value: string;
+  setValue: (value: string) => void;
+  submit: (e: any) => void;
+}
 
+const Form: React.FC<Props> = ({ value, setValue, submit }) => {
   const handleChange = (e: any): void => {
     const { value } = e.target;
 
-    setMessage(value);
+    setValue(value);
   };
 
   const handleSubmit = (e: any): void => {
-    e.preventDefault();
+    submit(e);
   };
 
   return (
@@ -20,7 +23,7 @@ const Form: React.FC = () => {
         label="Message"
         name="message"
         id="message"
-        value={message}
+        value={value}
         onChange={handleChange}
       />
       <Button type="submit" variation="primary">
